@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://byfd76e60ipvh"
+path="res://.godot/imported/Инцидент 0293_ Тарковский Комар (mp3cut.net).mp3-0086db1429142c5ea790f5cf01f798c7.mp3str"
+
+[deps]
+
+source_file="res://music/Инцидент 0293_ Тарковский Комар (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/Инцидент 0293_ Тарковский Комар (mp3cut.net).mp3-0086db1429142c5ea790f5cf01f798c7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

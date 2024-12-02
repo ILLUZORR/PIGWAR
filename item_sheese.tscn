@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://ny0aid3a5b1y"]
+
+[ext_resource type="Texture2D" uid="uid://16w5yf5sey0y" path="res://PNG/cheese.png" id="1_22v0m"]
+[ext_resource type="Script" path="res://item_sheese.gd" id="1_kgquh"]
+[ext_resource type="AudioStream" uid="uid://dur6u5owwe4cs" path="res://music/nom-nom-nom_gPJiWn4 (mp3cut.net).mp3" id="3_l2tui"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vh3ui"]
+radius = 48.0
+
+[node name="item_sheese" type="Node2D"]
+scale = Vector2(0.27, 0.27)
+script = ExtResource("1_kgquh")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_vh3ui")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.7, 0.74)
+texture = ExtResource("1_22v0m")
+
+[node name="use" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_l2tui")
+volume_db = 11.556
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

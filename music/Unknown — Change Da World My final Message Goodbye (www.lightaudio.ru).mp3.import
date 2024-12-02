@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bk4mthp1ltp4c"
+path="res://.godot/imported/Unknown — Change Da World My final Message Goodbye (www.lightaudio.ru).mp3-42e90f3ea725f92cf76905327a031410.mp3str"
+
+[deps]
+
+source_file="res://music/Unknown — Change Da World My final Message Goodbye (www.lightaudio.ru).mp3"
+dest_files=["res://.godot/imported/Unknown — Change Da World My final Message Goodbye (www.lightaudio.ru).mp3-42e90f3ea725f92cf76905327a031410.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

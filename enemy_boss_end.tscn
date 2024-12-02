@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://stm7cvoaxp2l"]
+
+[ext_resource type="Texture2D" uid="uid://l3afqytkxo41" path="res://PNG/boss_.png" id="1_qra8t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0skbk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhi4k"]
+atlas = ExtResource("1_qra8t")
+region = Rect2(0, 0, 333, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8khh"]
+atlas = ExtResource("1_qra8t")
+region = Rect2(333, 500, 333, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jyge"]
+atlas = ExtResource("1_qra8t")
+region = Rect2(666, 500, 333, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c008r"]
+atlas = ExtResource("1_qra8t")
+region = Rect2(0, 750, 333, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6dp0"]
+atlas = ExtResource("1_qra8t")
+region = Rect2(333, 750, 333, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2x8t4"]
+atlas = ExtResource("1_qra8t")
+region = Rect2(666, 750, 333, 250)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iqq1u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhi4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8khh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jyge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c008r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6dp0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2x8t4")
+}],
+"loop": false,
+"name": &"Death",
+"speed": 1.0
+}]
+
+[node name="enemy_boss_end" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0skbk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_iqq1u")
+animation = &"Death"
+autoplay = "Death"
+frame = 5
+frame_progress = 1.0

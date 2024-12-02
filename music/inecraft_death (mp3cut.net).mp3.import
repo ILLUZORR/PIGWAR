@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://fkmm0ak3p63i"
+path="res://.godot/imported/inecraft_death (mp3cut.net).mp3-181ca18026f13fe05d4038134a8d5d3a.mp3str"
+
+[deps]
+
+source_file="res://music/inecraft_death (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/inecraft_death (mp3cut.net).mp3-181ca18026f13fe05d4038134a8d5d3a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

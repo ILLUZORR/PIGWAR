@@ -1,0 +1,152 @@
+[gd_scene load_steps=16 format=3 uid="uid://w16lwj2wk2lb"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_lk47y"]
+[ext_resource type="Texture2D" uid="uid://cyiyf8a47d7is" path="res://PNG/pig_player-Sheet.png" id="1_y7s13"]
+[ext_resource type="AudioStream" uid="uid://f8icfnin873v" path="res://music/discord-notification.mp3" id="3_xjoy8"]
+[ext_resource type="AudioStream" uid="uid://d3ipbdmyi5mom" path="res://music/pig-grunt-squeal.mp3" id="4_1ckb7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oks25"]
+height = 37.9999
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p00l3"]
+size = Vector2(16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5t1j"]
+atlas = ExtResource("1_y7s13")
+region = Rect2(0, 81, 142, 81)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7qyi"]
+atlas = ExtResource("1_y7s13")
+region = Rect2(0, 160, 142, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_343ha"]
+atlas = ExtResource("1_y7s13")
+region = Rect2(142, 160, 142, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fh6qg"]
+atlas = ExtResource("1_y7s13")
+region = Rect2(142, 0, 142, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5q0fl"]
+atlas = ExtResource("1_y7s13")
+region = Rect2(0, 0, 142, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05ejw"]
+atlas = ExtResource("1_y7s13")
+region = Rect2(0, 85, 142, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5c6f"]
+atlas = ExtResource("1_y7s13")
+region = Rect2(0, 0, 142, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jwbd"]
+atlas = ExtResource("1_y7s13")
+region = Rect2(142, 85, 142, 85)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ynk2h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5t1j")
+}],
+"loop": true,
+"name": &"Dash",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7qyi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_343ha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fh6qg")
+}],
+"loop": false,
+"name": &"Death",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5q0fl")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05ejw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5c6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6jwbd")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 9.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_lk47y")
+
+[node name="MainCollision" type="CollisionShape2D" parent="."]
+rotation = 1.56909
+shape = SubResource("CapsuleShape2D_oks25")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+process_callback = 0
+limit_left = 0
+limit_right = 999999
+limit_bottom = 625
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(20, 0)
+shape = SubResource("RectangleShape2D_p00l3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -2.38419e-07)
+scale = Vector2(0.33, 0.33)
+sprite_frames = SubResource("SpriteFrames_ynk2h")
+animation = &"Death"
+autoplay = "Idle"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 136.0
+offset_bottom = 68.0
+theme_override_font_sizes/font_size = 41
+text = "HP: 100"
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+offset_left = 903.0
+offset_right = 1152.0
+offset_bottom = 132.0
+theme_override_font_sizes/font_size = 30
+text = "WASD - MOVE
+E - DASH/ATTACK
+M - GO TO MENU"
+
+[node name="Label3" type="Label" parent="CanvasLayer"]
+offset_top = 68.0
+offset_right = 147.0
+offset_bottom = 136.0
+theme_override_font_sizes/font_size = 41
+text = "SIZE:"
+
+[node name="dash" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_xjoy8")
+
+[node name="jump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_1ckb7")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

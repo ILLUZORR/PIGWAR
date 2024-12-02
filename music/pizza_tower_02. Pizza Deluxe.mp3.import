@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ip5utl4phky0"
+path="res://.godot/imported/pizza_tower_02. Pizza Deluxe.mp3-17658b5d820747b74775d2b05ea4c6e9.mp3str"
+
+[deps]
+
+source_file="res://music/pizza_tower_02. Pizza Deluxe.mp3"
+dest_files=["res://.godot/imported/pizza_tower_02. Pizza Deluxe.mp3-17658b5d820747b74775d2b05ea4c6e9.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

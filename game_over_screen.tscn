@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://b00u8g5s2gw5v"]
+
+[ext_resource type="Script" path="res://game_over_screen.gd" id="1_3mcr5"]
+[ext_resource type="PackedScene" uid="uid://cm5d7r33x0lry" path="res://bg.tscn" id="2_jguo6"]
+[ext_resource type="Texture2D" uid="uid://b2rl4b11gcdta" path="res://PNG/pngwing.com (1).png" id="3_6taf6"]
+[ext_resource type="AudioStream" uid="uid://cbguwaqyt8181" path="res://music/Violin Screech Sound effect (256  kbps) (mp3cut.net).mp3" id="4_hv8dx"]
+
+[node name="GameOverScreen" type="Node2D"]
+script = ExtResource("1_3mcr5")
+
+[node name="BG" parent="." instance=ExtResource("2_jguo6")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(559, 64)
+scale = Vector2(0.201562, 0.201562)
+texture = ExtResource("3_6taf6")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 294.0
+offset_top = 250.0
+offset_right = 817.0
+offset_bottom = 314.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 46
+text = "menu or level-changer?"
+
+[node name="YES" type="Button" parent="."]
+offset_left = 269.0
+offset_top = 413.0
+offset_right = 502.0
+offset_bottom = 474.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 31
+text = "LEVEL-CHANGER"
+
+[node name="MENU" type="Button" parent="."]
+offset_left = 580.0
+offset_top = 413.0
+offset_right = 813.0
+offset_bottom = 474.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 31
+text = "MENU"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_hv8dx")
+autoplay = true
+
+[connection signal="pressed" from="YES" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="MENU" to="." method="_on_menu_pressed"]

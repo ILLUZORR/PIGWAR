@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dy5gbqwro0k7s"
+path="res://.godot/imported/29-bruh (mp3cut.net).mp3-858d5f3c2cfdf6f67fc6d8ffeb194174.mp3str"
+
+[deps]
+
+source_file="res://music/29-bruh (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/29-bruh (mp3cut.net).mp3-858d5f3c2cfdf6f67fc6d8ffeb194174.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

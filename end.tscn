@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=3 uid="uid://bta3o5fnoq0cn"]
+
+[ext_resource type="Script" path="res://end.gd" id="1_33pfj"]
+[ext_resource type="Texture2D" uid="uid://l3afqytkxo41" path="res://PNG/boss_.png" id="2_802so"]
+[ext_resource type="AudioStream" uid="uid://bk4mthp1ltp4c" path="res://music/Unknown — Change Da World My final Message Goodbye (www.lightaudio.ru).mp3" id="3_hgw8q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chk1s"]
+atlas = ExtResource("2_802so")
+region = Rect2(0, 0, 333, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fepxr"]
+atlas = ExtResource("2_802so")
+region = Rect2(666, 480, 333, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3n01o"]
+atlas = ExtResource("2_802so")
+region = Rect2(0, 720, 333, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80c12"]
+atlas = ExtResource("2_802so")
+region = Rect2(333, 720, 333, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w706w"]
+atlas = ExtResource("2_802so")
+region = Rect2(666, 720, 333, 240)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h5ygi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chk1s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fepxr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3n01o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80c12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w706w")
+}],
+"loop": false,
+"name": &"End",
+"speed": 1.0
+}]
+
+[node name="END" type="Node2D"]
+script = ExtResource("1_33pfj")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(79, -66)
+offset = Vector2(0, -6.195)
+zoom = Vector2(2.995, 2.995)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(99, -45)
+scale = Vector2(0.474474, 0.483333)
+sprite_frames = SubResource("SpriteFrames_h5ygi")
+animation = &"End"
+autoplay = "End"
+
+[node name="Button" type="Button" parent="."]
+offset_left = -6.0
+offset_top = -17.0
+offset_right = 168.0
+offset_bottom = 17.0
+theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+text = "FINISH HIM"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_hgw8q")
+autoplay = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

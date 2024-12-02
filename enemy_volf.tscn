@@ -1,0 +1,132 @@
+[gd_scene load_steps=17 format=3 uid="uid://bohscn37ym0e2"]
+
+[ext_resource type="Texture2D" uid="uid://1d4rfnh5l6ye" path="res://PNG/enemy_volk.png" id="1_c78ww"]
+[ext_resource type="Script" path="res://enemy_volf.gd" id="1_d24uv"]
+[ext_resource type="AudioStream" uid="uid://cbguwaqyt8181" path="res://music/Violin Screech Sound effect (256  kbps) (mp3cut.net).mp3" id="3_hntqd"]
+[ext_resource type="AudioStream" uid="uid://civ48vnya8k0c" path="res://music/fart-qui-sort-bien-de-ton-cul-ptn-ses-noir (mp3cut.net).mp3" id="4_qqyls"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ny6ct"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejlnt"]
+atlas = ExtResource("1_c78ww")
+region = Rect2(193, 91, 193, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fswf"]
+atlas = ExtResource("1_c78ww")
+region = Rect2(0, 273, 193, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4qwg"]
+atlas = ExtResource("1_c78ww")
+region = Rect2(193, 273, 193, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pr8n"]
+atlas = ExtResource("1_c78ww")
+region = Rect2(0, 182, 193, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2t5k"]
+atlas = ExtResource("1_c78ww")
+region = Rect2(193, 182, 193, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67f4u"]
+atlas = ExtResource("1_c78ww")
+region = Rect2(0, 0, 193, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wm05j"]
+atlas = ExtResource("1_c78ww")
+region = Rect2(0, 91, 193, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adefr"]
+atlas = ExtResource("1_c78ww")
+region = Rect2(193, 0, 193, 91)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dibjr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejlnt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fswf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4qwg")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pr8n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2t5k")
+}],
+"loop": false,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67f4u")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wm05j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67f4u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adefr")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v8w4e"]
+radius = 216.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lj1wf"]
+size = Vector2(47, 12)
+
+[node name="enemy_volf" type="CharacterBody2D"]
+script = ExtResource("1_d24uv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.56004
+shape = SubResource("CapsuleShape2D_ny6ct")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3.22967, 1.49999)
+scale = Vector2(0.240722, 0.252747)
+sprite_frames = SubResource("SpriteFrames_dibjr")
+animation = &"Death"
+autoplay = "Idle"
+
+[node name="detector" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detector"]
+shape = SubResource("CircleShape2D_v8w4e")
+
+[node name="Attack" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
+position = Vector2(0.499999, -0.500011)
+shape = SubResource("RectangleShape2D_lj1wf")
+
+[node name="Death" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_hntqd")
+
+[node name="Attack2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_qqyls")
+
+[connection signal="body_entered" from="detector" to="." method="_on_detector_body_entered"]
+[connection signal="body_exited" from="detector" to="." method="_on_detector_body_exited"]
+[connection signal="body_entered" from="Attack" to="." method="_on_attack_body_entered"]

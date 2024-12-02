@@ -1,0 +1,140 @@
+[gd_scene load_steps=4 format=3 uid="uid://dk0l7ot00nnb1"]
+
+[ext_resource type="Script" path="res://levels_menu.gd" id="1_hoecr"]
+[ext_resource type="PackedScene" uid="uid://cm5d7r33x0lry" path="res://bg.tscn" id="1_ujnur"]
+[ext_resource type="AudioStream" uid="uid://ip5utl4phky0" path="res://music/pizza_tower_02. Pizza Deluxe.mp3" id="3_vg70n"]
+
+[node name="levels_menu" type="Node2D"]
+script = ExtResource("1_hoecr")
+
+[node name="BG" parent="." instance=ExtResource("1_ujnur")]
+
+[node name="LEVEL1" type="Button" parent="."]
+offset_left = 41.0
+offset_top = 250.0
+offset_right = 317.0
+offset_bottom = 385.0
+theme_override_font_sizes/font_size = 36
+text = "LEVEL 1"
+
+[node name="LEVEL2" type="Button" parent="."]
+offset_left = 41.0
+offset_top = 439.0
+offset_right = 317.0
+offset_bottom = 574.0
+theme_override_font_sizes/font_size = 36
+text = "LEVEL 2
+"
+
+[node name="LEVEL3" type="Button" parent="."]
+offset_left = 431.0
+offset_top = 250.0
+offset_right = 707.0
+offset_bottom = 385.0
+theme_override_font_sizes/font_size = 36
+text = "LEVEL 3
+"
+
+[node name="LEVEL4" type="Button" parent="."]
+offset_left = 431.0
+offset_top = 439.0
+offset_right = 707.0
+offset_bottom = 574.0
+theme_override_font_sizes/font_size = 36
+text = "LEVEL 4"
+
+[node name="LEVEL5" type="Button" parent="."]
+offset_left = 845.0
+offset_top = 250.0
+offset_right = 1121.0
+offset_bottom = 385.0
+theme_override_font_sizes/font_size = 36
+text = "LEVEL 5"
+
+[node name="LEVEL6" type="Button" parent="."]
+offset_left = 845.0
+offset_top = 439.0
+offset_right = 1121.0
+offset_bottom = 574.0
+theme_override_font_sizes/font_size = 36
+text = "LEVEL 6
+"
+
+[node name="QUIT" type="Button" parent="."]
+offset_left = 845.0
+offset_top = 48.0
+offset_right = 1121.0
+offset_bottom = 121.0
+theme_override_colors/font_disabled_color = Color(1, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0.92549, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "QUIT
+"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 459.0
+offset_right = 661.0
+offset_bottom = 77.0
+theme_override_colors/font_color = Color(1, 0.862745, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "LEVEL-CHOICE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 41.0
+offset_top = 121.0
+offset_right = 317.0
+offset_bottom = 194.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "EASY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 431.0
+offset_top = 121.0
+offset_right = 707.0
+offset_bottom = 194.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "MEDIUM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 845.0
+offset_top = 121.0
+offset_right = 1121.0
+offset_bottom = 194.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "HARD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_vg70n")
+autoplay = true
+
+[connection signal="pressed" from="LEVEL1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="LEVEL2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="LEVEL3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="LEVEL4" to="." method="_on_level_4_pressed"]
+[connection signal="pressed" from="LEVEL5" to="." method="_on_level_5_pressed"]
+[connection signal="pressed" from="LEVEL6" to="." method="_on_level_6_pressed"]
+[connection signal="pressed" from="QUIT" to="." method="_on_quit_pressed"]

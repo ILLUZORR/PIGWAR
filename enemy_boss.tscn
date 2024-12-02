@@ -1,0 +1,115 @@
+[gd_scene load_steps=15 format=3 uid="uid://dmmmgg8slp45s"]
+
+[ext_resource type="Script" path="res://enemy_boss.gd" id="1_1c1vv"]
+[ext_resource type="Texture2D" uid="uid://l3afqytkxo41" path="res://PNG/boss_.png" id="2_thqda"]
+[ext_resource type="AudioStream" uid="uid://byfd76e60ipvh" path="res://music/Инцидент 0293_ Тарковский Комар (mp3cut.net).mp3" id="3_ygcxa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2a4a8"]
+radius = 58.0086
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ol7g8"]
+radius = 1298.68
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fb2v6"]
+radius = 86.1452
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mnt7"]
+atlas = ExtResource("2_thqda")
+region = Rect2(333, 0, 333, 229)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wx6dr"]
+atlas = ExtResource("2_thqda")
+region = Rect2(666, 0, 333, 179)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2bx6"]
+atlas = ExtResource("2_thqda")
+region = Rect2(0, 232, 333, 232)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ypvh"]
+atlas = ExtResource("2_thqda")
+region = Rect2(333, 222, 333, 222)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5cb1"]
+atlas = ExtResource("2_thqda")
+region = Rect2(666, 215, 333, 215)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ri3jp"]
+atlas = ExtResource("2_thqda")
+region = Rect2(0, 436, 333, 218)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dj44"]
+atlas = ExtResource("2_thqda")
+region = Rect2(0, 0, 332, 228)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ev3uw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mnt7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wx6dr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2bx6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ypvh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5cb1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ri3jp")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dj44")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="enemy_boss" type="CharacterBody2D"]
+script = ExtResource("1_1c1vv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2a4a8")
+
+[node name="detector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detector"]
+shape = SubResource("CircleShape2D_ol7g8")
+
+[node name="attack" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack"]
+shape = SubResource("CircleShape2D_fb2v6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(34, 17)
+scale = Vector2(0.777108, 0.789474)
+sprite_frames = SubResource("SpriteFrames_ev3uw")
+animation = &"Attack"
+autoplay = "Idle"
+
+[node name="Label" type="Label" parent="."]
+offset_left = -68.0
+offset_top = -83.0
+offset_right = 75.0
+offset_bottom = -60.0
+text = "FINAL BOSS: BORIS
+need size for kill: 5"
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ygcxa")
+volume_db = 5.393
+
+[connection signal="body_entered" from="detector" to="." method="_on_detector_body_entered"]
+[connection signal="body_exited" from="detector" to="." method="_on_detector_body_exited"]
+[connection signal="body_entered" from="attack" to="." method="_on_attack_body_entered"]

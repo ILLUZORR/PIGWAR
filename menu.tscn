@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2p6px3qsih00"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_31d80"]
+[ext_resource type="PackedScene" uid="uid://cm5d7r33x0lry" path="res://bg.tscn" id="2_nrh5l"]
+[ext_resource type="AudioStream" uid="uid://ip5utl4phky0" path="res://music/pizza_tower_02. Pizza Deluxe.mp3" id="3_f5iah"]
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_31d80")
+
+[node name="Play" type="Button" parent="."]
+offset_left = 366.0
+offset_top = 179.0
+offset_right = 823.0
+offset_bottom = 315.0
+theme_override_font_sizes/font_size = 30
+text = "Play"
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 385.0
+offset_top = 494.0
+offset_right = 815.0
+offset_bottom = 622.0
+theme_override_font_sizes/font_size = 30
+text = "Quit
+"
+
+[node name="BG" parent="." instance=ExtResource("2_nrh5l")]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 434.0
+offset_right = 718.0
+offset_bottom = 86.0
+theme_override_font_sizes/font_size = 60
+text = "PIG WAR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_f5iah")
+autoplay = true
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

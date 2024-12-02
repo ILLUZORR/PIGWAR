@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cbguwaqyt8181"
+path="res://.godot/imported/Violin Screech Sound effect (256  kbps) (mp3cut.net).mp3-85acc0b3c46ad55b228fa8113e3811e9.mp3str"
+
+[deps]
+
+source_file="res://music/Violin Screech Sound effect (256  kbps) (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/Violin Screech Sound effect (256  kbps) (mp3cut.net).mp3-85acc0b3c46ad55b228fa8113e3811e9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
